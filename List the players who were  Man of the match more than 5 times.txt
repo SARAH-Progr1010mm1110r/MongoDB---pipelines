@@ -1,0 +1,16 @@
+[{
+ $project: {
+  _id: 0,
+  name: 1,
+  isManOfTheMatch: 1,
+  manOfTheMatch: 1
+ }
+}, {
+ $match: {
+  manOfTheMatch: {
+   $gt: 5
+  }
+ }
+}, {
+ $out: 'PlayersManOfMatch>5'
+}]

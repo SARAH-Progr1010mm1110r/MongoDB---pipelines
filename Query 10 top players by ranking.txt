@@ -1,0 +1,15 @@
+[{
+ $project: {
+  _id: 0,
+  name: 1,
+  ranking: 1
+ }
+}, {
+ $sort: {
+  ranking: -1
+ }
+}, {
+ $limit: 10
+}, {
+ $out: '10_top_players_by_rank'
+}]

@@ -1,0 +1,20 @@
+[{
+ $project: {
+  _id: 0,
+  positionText: 1,
+  teamName: 1,
+  goal: 1
+ }
+}, {
+ $group: {
+  _id: {
+   teame: '$teamName',
+   Player_position: '$positionText'
+  },
+  goals: {
+   $sum: '$goal'
+  }
+ }
+}, {
+ $out: 'CountNOgoalsPosition_perTeam;'
+}]

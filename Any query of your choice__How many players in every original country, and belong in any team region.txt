@@ -1,0 +1,24 @@
+[{
+ $project: {
+  _id: 0,
+  originCountry: 1,
+  name: 1,
+  teamRegionName: 1
+ }
+}, {
+ $group: {
+  _id: {
+   playersCountry: '$originCountry',
+   teamCountry: '$teamRegionName'
+  },
+  numOfplayers: {
+   $sum: 1
+  }
+ }
+}, {
+ $sort: {
+  numOfplayers: -1
+ }
+}, {
+ $out: 'playersInEachCountryWhatTeamRegion'
+}]
